@@ -140,7 +140,6 @@ gulp.task('scripts', () => {
     .pipe($.plumber())  //自动处理全部错误信息防止因为错误而导致 watch 不正常工作
     .pipe($.sourcemaps.init({loadMaps:true})) 
     .pipe($.babel())
-    .pipe(webpack(webpackConfig))
     .pipe($.sourcemaps.write('./'))
     .pipe(gulp.dest('.tmp/scripts'))
     .pipe(browserSync.reload({stream: true}));
