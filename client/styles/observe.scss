@@ -1,0 +1,44 @@
+@import "./layout/base.scss";
+$title-background:#a26565;
+$left-background:#5b5b69;
+$right-background:#FFFFFF;
+$font-color:#FFFFFF;
+div{
+    color: $font-color;
+}
+.title-container{
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 50px;
+    background: $title-background;
+    font-size: 20px;
+}
+.float{
+    float: left;
+}
+.left-container{
+    background: $left-background;
+    width:20%;
+    height: 100%;
+    .category{
+        margin: 10px 10px;
+         h3{
+            margin: 15px 0px;
+         }
+         h4{
+             margin: 0px 20px;
+         }
+         ul{
+             margin: 5px 40px;
+             li{
+                padding: 5px 0px;
+                //  list-style-type:square;
+             }
+         }
+    }
+}
+.right-container{
+    width:70%;
+    // background: $right-background;
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="core" lang="zh-Hans">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>登录</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="copyright" content="众杰能">
+	<meta name="robots" content="index,follow">
+	<meta name="author" content=""> 
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<meta property="og:locale" content="zh-Hans">
+    <link inline rel="stylesheet" type="text/css" href="styles/login.css">
+    <script src="http://static.ftchinese.com/js/jquery-1.10.2.min.js?0"></script>
+    
+
+</head>
+<body>
+
+    <div class="account-container">
+
+<!-- action="/index.php/users/registeruser/ajax"  -->
+<div  id="nologincomment" class="nologincomment">
+    <!-- <form method="post" action="/index.php/users/registeruser/ajax"> -->
+    <div class="container">
+        <div class = "comment-logo-section">LOGO</div>
+        <div class = "comment-input-section">
+            <label><img src="http://static.ftchinese.com/images/png/enrolEmail.png"/></label>
+            <input type="email" placeholder="请输入邮箱" autocorrect="off" name="userName" id="userName" class=""/> 
+        </div>
+        <div class="register-hint"  id = "user-hint">该邮箱已登录，请直接登录</div>
+        <div class="register-hint"  id = "user-correct-check">请输入有效的邮箱</div>
+        <div class="register-instruction">用于登录ftcc，40字符以内</div>
+        <div class = "comment-input-section">
+            <label><img src="http://static.ftchinese.com/images/png/accountPassword.png"/></label>
+            <input type="password" placeholder="请输入密码" autocorrect="off" name="userPassword" id="userPassword" class=""/>
+            <label class="password-eye" id = "accountEye"><img src="http://static.ftchinese.com/images/png/accountEye.png"/></label>
+        </div>
+        <div class="register-hint" id = "password-hint">请输入正确密码</div>
+        <div class="register-instruction">6-20位英文字母和数字组合</div>
+        <!--<input type="submit" value="注册" class="ui-light-btn register-btn" onclick="login(1)"/> -->
+        <button class="ui-light-btn register-btn" type="submit" onclick="verifyEmailOrPassword()">注册</button>
+        <div class="register-instruction agree-instruction">点击“注册”按钮，即代表您同意FTCC用户注册协议</div>
+
+    </div>
+     <!-- </form> -->
+</div>
+
+
+</div>
+
+</body>
+
+<script type="text/javascript">
+    var isShowPassword=false;
+    $('body').on('click', '#accountEye', function () {
+        if (isShowPassword===false){
+            $('#userPassword').attr('type', 'text')
+            isShowPassword=true
+        }else{
+             $('#userPassword').attr('type', 'password')
+             isShowPassword=false
+        }
+        
+    });
+    var isLegalUser = true;
+    $('body').on('blur', '#userName', function () {
+        checkUserName();
+        checkEmailRegistration()
+    });
+    $('body').on('blur', '#userPassword', function () {
+        checkPassword();
+    });
+    function isEmail(str){ 
+        var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/; 
+        return reg.test(str); 
+    }
+    function checkUserName(){
+        var userName = $('#userName').val();
+        var isTrue = isEmail(userName)
+        if (userName != ''||null||undefined){
+            // console.log("账户值"+ isTrue + userName)
+            if (isTrue === true){
+                $('#user-hint').css('display', 'none');
+                $('#user-correct-check').css('display', 'none');
+                return;
+            }else{
+                $('#user-correct-check').css('display', 'block');
+            }
+        }
+    } 
+    function checkPassword(){
+        var userPassword = $('#userPassword').val();
+        var reg = /^[A-Za-z0-9]{6,20}$/; 
+        var isTrue =  reg.test(userPassword);
+        if (userPassword != ''||null||undefined){
+            if (isTrue === true){
+                $('#password-hint').css('display', 'none');
+                return;
+            }else{
+                $('#password-hint').css('display', 'block');
+            }
+        }
+    }
+    function checkEmailRegistration(){
+        var userName = $('#userName').val();
+        if(userName != '') {
+            $.ajax({
+                type: 'get',
+                url: '/index.php/users//checkemailexists?e='+userName+'',
+                success: function(data) {
+                    if (data === 'yes') {
+                        $('#user-hint').css('display', 'block');
+                        $('#userPassword').css('background-color', 'green');
+                        return;
+                    }else{
+                        $('#user-hint').css('display', 'none');
+                        // $('#user-hint').html('用户名可用');
+                    }
+                },
+                error: function() {
+                    // presentAlert('登录失败', '亲爱的用户，由于FTCC的服务器未能正确响应，所以您未能成功登录。请稍后再试，或尝试其他登录方式。'); 
+                    return;
+                }
+            });
+        }
+    }
+    
+    function verifyEmailOrPassword(){
+        var userName = $('#userName').val();
+        var userPassword = $('#userPassword').val();
+        $.ajax({
+            type: 'post',
+            url: '/index.php/users/registeruser/ajax',
+            dataType: 'json',
+            data: {
+                   email:userName,
+                   id:"signupForm",
+                   password:userPassword
+               },
+            success: function(data) {
+                 $('#userPassword').text(data);
+                 $('#userPassword').css('background-color', 'red')
+            },
+            error: function() {
+                presentAlert('注册失败', '请重新注册。');
+                return;
+            }
+        });
+
+        // console.log("密码"+ userPassword);
+        if (userName === ''){
+            $('#user-correct-check').css('display', 'block');
+        }else{
+            checkUserName();
+            // $('#user-correct-check').css('display', 'none');
+            // $('#user-hint').css('display', 'none');
+            // $('#password-hint').css('display', 'none');
+        }
+        if (userPassword === ''){
+            $('#password-hint').css('display', 'block');
+        }else{
+            checkPassword();
+        }
+        
+    }
+</script>
+</html>
