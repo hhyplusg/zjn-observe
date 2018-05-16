@@ -8,8 +8,11 @@ const $ = require('gulp-load-plugins')();
 const cssnext = require('postcss-cssnext');
 const browserSync = require('browser-sync').create();
 
+const rollup = require('rollup').rollup;
+const nodeResolve = require('rollup-plugin-node-resolve');
+const buble = require('rollup-plugin-buble');
+const babel = require('rollup-plugin-babel');
 
-let cache;
 
 
 const nunjucks = require('nunjucks');
@@ -84,10 +87,10 @@ gulp.task('build-page', () => {
       .then(html => {  
         // 此处是development  
         if (process.env.NODE_ENV === 'production') {
-          return inline(html, {
-            compress: true,
-            rootpath: path.resolve(process.cwd(), '.tmp')
-          });
+          // return inline(html, {
+          //   compress: true,
+          //   rootpath: path.resolve(process.cwd(), '.tmp')
+          // });
         }    
         return html;
         })
@@ -133,14 +136,31 @@ gulp.task('jshint', function () {
     .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('scripts', () => {
-  return gulp.src('index.js')
-    .pipe($.plumber())  //自动处理全部错误信息防止因为错误而导致 watch 不正常工作
-    .pipe($.sourcemaps.init({loadMaps:true})) 
-    .pipe($.babel())
-    .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest('.tmp/scripts'))
-    .pipe(browserSync.reload({stream: true}));
+gulp.task('scripts', async () => {
+  const origami = await fs.readAsync('views/data/path-detail.json','json');
+  const demos = origami.demos;
+  async function rollupOneJs(demo) {
+    const bundle = await rollup({
+      input:`client/scripts/${demo.js}`,
+      plugins:[
+        babel({//这里需要配置文件.babelrc
+          exclude:'node_modules/**'
+        }),
+        nodeResolve({
+          jsnext:true,
+        })
+      ]
+    });
+
+    await bundle.write({//返回promise，以便下一步then()
+        file: `.tmp/scripts/${demo.js}`,
+        format: 'iife',
+        sourcemap: true
+    });
+  }
+  //console.log(demos);
+  await demos.forEach(rollupOneJs);
+  browserSync.reload();
 });
 
 
