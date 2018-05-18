@@ -221,7 +221,14 @@ gulp.task('serve', gulp.parallel('build-page', 'styles', 'scripts', () => {
 
 }));
 
-gulp.task('build', gulp.series('prod','clean','styles', 'scripts', 'build-page','comJs','comCss', 'dev'));
+gulp.task('copyLib', () => {
+  const dest = '.tmp/Lib/';
+  return gulp.src(['views/StockChartWeb/Lib/**'])
+    .pipe(gulp.dest(`./${dest}`))
+});
+
+
+gulp.task('build', gulp.series('prod','clean','styles', 'scripts','copyLib', 'build-page','comJs','comCss', 'dev'));
 
 const destDir = 'dev_www/frontend/tpl/next/html';
 
@@ -245,6 +252,8 @@ gulp.task('copy', () => {
   return gulp.src(['.tmp/subscription.html'])
     .pipe(gulp.dest(`../${dest}`))
 });
+
+
 
 
 
