@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <!-- <meta charset="utf-8"><link rel="icon" href="https://static.jianshukeji.com/highcharts/images/favicon.ico"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            /* css 代码  */
+        </style>
+        
+   
+        
+        <script src="Lib/Highstock-6.1.0/code/highstock.js"></script>
+        <script src="Lib/Highstock-6.1.0/code/modules/exporting.js"></script>
+         <!-- <script src="Lib/Highstock-6.1.0/code/"></script>  -->
+
+         <!-- <script src="https://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script> -->
+        <!-- <script src="https://img.hcharts.cn/highstock/highstock.js"></script> -->
+        <!-- <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script> -->
+        <!-- <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script> -->
+
+        
+
+        <script type="text/javascript" src="Lib/jquery-1.12.0.min.js"></script> 
+        <script type="text/javascript" src="Lib/echarts.min.js"></script>
+        <script type="text/javascript" src="Lib/ecStat.min.js"></script>
+
+        <style type="text/css">
+            .FloatDiv{
+                float:left;
+                /*margin-left:auto; */
+                /*margin-right:auto;*/
+            }
+            #showAeraDiv{
+                float:left;
+                border: 3px solid #CCCCCC;
+                box-sizing:border-box; 
+                width:960px;height:550px;
+                /*background-color: blue;*/
+                padding: 40px 20px 20px;
+            }
+            #showAera{          
+                /*width:920px;*/
+                height:490px;
+  
+            }
+            li{
+                font-size:20px;
+                font-weight: bold;
+                text-align:left;
+                height: 50px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div style="width:1200px;height:100px;background-color: red;margin-left:auto;margin-right:auto;text-align: center;vertical-align: middle;">
+            <h1>策略这是一个测试版</h1>
+        </div>
+        <div style="width:1200px;height:550px;margin-left:auto;margin-right:auto;text-align:center">
+            <div class= "FloatDiv" style="width:240px;height:550px;background-color: green">
+                <!-- <input type="button" value="1"  onclick="drawChart5()"/>   -->
+
+                <ul>
+                   <li id="list1">基础表单轴</li>     <!-- 博弈/存量指标 -->
+                   <li id="list2">百分比图方法实现双轴</li>     <!-- 融资买入/可用担保价值 -->
+                   <li id="list3">基础表实现双轴</li>           <!-- 综合性情绪指标 -->
+                   <li id="list4">基础表实现双轴(自己造数据)</li>     <!-- 强势股占比 -->
+                   <li id="list5">散点图</li>  <!--  指数换手率分布图（散点图）-->
+                   <li id="list6">反转图</li>      <!--速度/加速度  -->  
+                   <li id="list7">象限图</li>          <!--速度/加速度  -->
+                </ul>
+                
+            </div>
+            <div  id="showAeraDiv">
+                <div  id="showAera"></div>
+            </div>     
+        </div>
+
+
+<!-- 
+        <div id="container7" style="width:900px;height:400px;margin-bottom: 30px; text-align:center;margin-left:auto;margin-right:auto;border: 2px solid #CCCCCC; ">
+            <canvas id ="myCanvas" width="900" height="400" ></canvas>
+        </div>
+
+        <div id="container6" style="width:900px;height:400px;margin-bottom: 30px; text-align:center;margin-left:auto;margin-right:auto;border: 2px solid #CCCCCC; "></div>
+
+        <div id="container5" style="width:900px;height:400px;margin-bottom: 30px; text-align:center;margin-left:auto;margin-right:auto;border: 2px solid #CCCCCC; "></div>
+
+        <div id="container4" style="width:900px;height:400px;margin-bottom: 30px; text-align:center;margin-left:auto;margin-right:auto;border: 2px solid #CCCCCC; "></div>
+
+
+        <div id="container3" style="width:900px;height:400px;margin-bottom: 30px; text-align:center;margin-left:auto;margin-right:auto;border: 2px solid #CCCCCC; "></div>
+
+        <div id="container2" style="width:900px;height:400px;margin-bottom: 30px; text-align:center;margin-left:auto;margin-right:auto;border: 2px solid #CCCCCC; "></div>
+
+
+        <div id="container" style="width:900px;height:400px;margin-bottom: 30px; text-align:center;margin-left:auto;margin-right:auto;border: 2px solid #CCCCCC; "></div> -->
+    
+
+
+        <script type="text/javascript" src="DrawChart.js" ></script>
+
+    </body>
+</html>

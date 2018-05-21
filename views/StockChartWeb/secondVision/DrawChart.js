@@ -1,10 +1,10 @@
 
 $(function(){ 
 	console.log("开始画图--");
-	drawChart();
+	// drawChart();
 	// drawChart2(); 
 	// drawChart3();
-	// drawChart4();
+	drawChart4();
 	// drawChart5();
 	// drawChart6();
 	// drawChart7();
@@ -84,19 +84,10 @@ function drawChart(){
 		        borderWidth: 2,
 		        layout: 'vertical',
 		        verticalAlign: 'top',
-		        y: 95,
-				x:-600,
+		        y: 100,
 		        shadow: true,
-				floating: true,
-		        // itemWidth: 140,
-		        // maxHeight:10
-				// labelFormatter: function() {
-				// 		if(this.name.length> 10) {
-				// 				return '<span title="'+ this.name+'">' + this.name.substring(0, 10) + '<br>'+this.name.substring(10, 20)+'...</span>';
-				// 		}
-				// 		return this.name;
-				// },
-				
+		        itemWidth: 80,
+		        maxHeight:10
 		    },
 			rangeSelector: {
 				selected: 1
@@ -111,22 +102,11 @@ function drawChart(){
 				margin: 30
 			},
 			xAxis:{
-				lineColor: '#000',
-    		    lineWidth: 1,
-				tickLength: 5,
-				tickWidth: 1,
-        		tickColor: '#000',
-				// linkedTo: 0
-				// offset:-100
+				
 			},
 			yAxis: {
-				visible: true,
+				offset:3000,
 				opposite: false,
-				lineColor: '#000',
-    		    lineWidth: 1,
-				tickLength: 5,
-				tickWidth: 1,
-        		tickColor: '#000',
 				title: {
 						// text: 'Exchange rate'
 				},
@@ -136,10 +116,7 @@ function drawChart(){
 						dashStyle: 'shortdash',
 						width: 2,
 						label: {
-								text: '0.25',
-								align: 'right',
-								x:-5,
-								y:-10
+								// text: '0.25'
 						}
 				}, {
 						value: maxRate,
@@ -147,25 +124,18 @@ function drawChart(){
 						dashStyle: 'shortdash',
 						width: 2,
 						label: {
-								text: '0.4'
+								// text: '0.4'
 						}
 				}]
 			},
 			series: [{
-				name: '博弈/存量指标ghghghghghghghgh',
+				name: ' 博弈/存量资金feichan长Dev\n一个表示看看什么样子',
 				data: data,
 				tooltip: {
 						valueDecimals: 4
 				}
 			}]
 		});
-			// // x轴自动对齐y轴0值 by 宽宽 2017-08-21
-	// var yZero = chart.yAxis[0].toPixels(0);
-	// var yMin = chart.yAxis[0].toPixels(chart.yAxis[0].min);
-	// chart.xAxis[0].update({
-	// 		offset:  yZero - yMin
-	// });
-
 	});
 }
 
@@ -194,6 +164,9 @@ function drawChart2(){
 						},
 					margin: 30
 				},
+				// xAxis:{
+				// 	offset:-200
+				// },
 				yAxis: [
 				{
 						title: {
@@ -271,7 +244,7 @@ function drawChart3(){
 				startPeriod,
 				date,
 				rate,
-				index,m;
+				index;
 		var Xdata=new Array();
 		var ydata1=new Array();
 		var ydata2=new Array();
@@ -388,8 +361,8 @@ function drawChart4(){
 
 	var MYdata2=[[Date.UTC(2013,5,2),1.7695],[Date.UTC(2013,5,3),1.7648],[Date.UTC(2013,5,4),1.7645],[Date.UTC(2013,5,5),0.7638],[Date.UTC(2013,5,6),0.7549],[Date.UTC(2013,5,7),0.7562],[Date.UTC(2013,5,9),0.7574],[Date.UTC(2013,5,10),0.7543],[Date.UTC(2013,5,11),0.7510],[Date.UTC(2013,5,12),0.7498],[Date.UTC(2013,5,13),0.7477],[Date.UTC(2013,5,14),0.7492],[Date.UTC(2013,5,16),0.7487],[Date.UTC(2013,5,17),0.7480],[Date.UTC(2013,5,18),0.7466],[Date.UTC(2013,5,19),0.7521],[Date.UTC(2013,5,20),0.7564],[Date.UTC(2013,5,21),0.7621],[Date.UTC(2013,5,23),0.7630],[Date.UTC(2013,5,24),0.7623],[Date.UTC(2013,5,25),1.7644],[Date.UTC(2013,5,26),1.7685],[Date.UTC(2015,5,9),0.8862],[Date.UTC(2015,5,10),0.8829],[Date.UTC(2015,5,11),0.8882],[Date.UTC(2015,5,12),0.8873],[Date.UTC(2015,5,14),0.8913],[Date.UTC(2015,5,15),0.8862],[Date.UTC(2015,5,16),0.8891],[Date.UTC(2015,5,17),0.8821],[Date.UTC(2015,5,18),0.8802],[Date.UTC(2015,5,19),0.8808],[Date.UTC(2015,5,21),0.8794],[Date.UTC(2015,5,22),0.8818],[Date.UTC(2015,5,23),0.8952],[Date.UTC(2015,5,24),0.8924],[Date.UTC(2015,5,25),0.8925],[Date.UTC(2015,5,26),0.8955],[Date.UTC(2015,5,28),0.9113],[Date.UTC(2015,5,29),1.8900],[Date.UTC(2015,5,30),1.8950]];
 
-	// $.get('data.json', function (data) {
-	// 	console.log("--MYdata222-----");
+	$.get('data.json', function (data) {
+		console.log("--MYdata222-----");
 
 		// var MYdata2=data;
 
@@ -405,30 +378,30 @@ function drawChart4(){
 		// 		rate,
 		// 		index;
 		// console.log("--MYdata-----");
-		// var Xdata=new Array();
-		// var ydata1=new Array();
-		// var ydata2=new Array();
-		// var copydata=new Array();
+		var Xdata=new Array();
+		var ydata1=new Array();
+		var ydata2=new Array();
+		var copydata=new Array();
 
 		// startDate.setMonth(startDate.getMonth() - 3); // a quarter of a year before last data point
 		// startPeriod = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
 
 
-		// for (m = 0; m <=data.length - 1; m = m + 1) {
-		// 		Xdata[m]=data[m][0];
-		// 		ydata1[m]=data[m][1];
-		// 		ydata2[m]=data[m][1];
+		for (m = 0; m <=data.length - 1; m = m + 1) {
+				Xdata[m]=data[m][0];
+				ydata1[m]=data[m][1];
+				ydata2[m]=data[m][1];
 
-		// 		copydata[m]=new Array(2);
-		// 		copydata[m][0]=data[m][0];
-		// 		copydata[m][1]=data[m][1]+2*Math.random();
+				copydata[m]=new Array(2);
+				copydata[m][0]=data[m][0];
+				copydata[m][1]=data[m][1]+2*Math.random();
 
-		// 		// copydata.push(data[m]);
-		// }
-		// console.log("自己造数据画双轴");
-		// console.log(copydata[0][0]);
-		// console.log(copydata);
-		// console.log(copydata.length);
+				// copydata.push(data[m]);
+		}
+		console.log("自己造数据画双轴");
+		console.log(copydata[0][0]);
+		console.log(copydata);
+		console.log(copydata.length);
 		// Create the chart
 		Highcharts.stockChart('showAera', {
 			credits: {
@@ -472,7 +445,7 @@ function drawChart4(){
 				}
 			]
 		});
-	// });ß
+	});
 }
 //散点图
 function drawChart5(){
@@ -600,7 +573,7 @@ function drawChart6(){
 	            }
 	        },
 	        maxPadding: 0.05,
-	        showLastLabel: true,
+	        showLastLabel: true，
 			// offset:-100
 	    },
 	    yAxis: {
@@ -613,7 +586,6 @@ function drawChart6(){
 	            }
 	        },
 	        lineWidth: 2,
-			// offset:-100
 	    },
 	    legend: {
 	        enabled: false
@@ -635,26 +607,16 @@ function drawChart6(){
 	    }]
 	});
 
-	// x轴自动对齐y轴0值 by 宽宽 2017-08-21
-	// var xZero = chart.xAxis[0].toPixels(0);
-	// var xMin = chart.xAxis[0].toPixels(chart.xAxis[0].min);
-	// chart.yAxis[0].update({
-	// 		offset:  xZero - xMin
+	// // x轴自动对齐y轴0值 by 宽宽 2017-08-21
+	// var yZero = chart.yAxis[0].toPixels(0);
+	// var yMin = chart.yAxis[0].toPixels(chart.yAxis[0].min);
+	// chart.xAxis[0].update({
+	// 		offset:  yZero - yMin
 	// });
 
 }
 // 象限图 
 function drawChart7(){
-	// //去除正在显示的图表
-	// var currentDiv=document.getElementById('showAera');
-	// if (currentDiv) {
-	// 	console.log("label succeed");
-	// 	currentDiv.innerHTML='';
-	// } else {
-	// 	console.log("label fail");
-	// }
-
-
 	console.log("开始drawChart-7-");
 	var data = [[3.275154, 2.957587],    [-3.344465, 2.603513],
     [0.355083, -3.376585],    [1.852435, 3.547351],
@@ -699,14 +661,13 @@ function drawChart7(){
 
 	// 基于准备好的dom，初始化echarts实例
 	var myChart = echarts.init(document.getElementById('showAera'));
-	// console.log(document.getElementById('showAera'));
 
 	var clusterNumber = 6;
 	// See https://github.com/ecomfe/echarts-stat
 	var step = ecStat.clustering.hierarchicalKMeans(data, clusterNumber, true);
 	var result;
 
-	var option = {
+	option = {
 	    timeline: {
 	        top: 'center',
 	        right: 35,
@@ -729,7 +690,7 @@ function drawChart7(){
 	        title: {
 	            text: '速度/加速度(象限图)',
 	            // subtext: 'By ecStat.hierarchicalKMeans',
-	            // sublink: 'https://github.com/ecomfe/echarts-stat',
+	            sublink: 'https://github.com/ecomfe/echarts-stat',
 	            left: 'center'
 	        },
 	        xAxis: {
@@ -751,16 +712,13 @@ function drawChart7(){
 	    option.timeline.data.push(i + '');
 
 	}
-	// console.log("开始drawChart-7---option.timeline.data---");
-	// console.log(option.timeline.data);
+	console.log("开始drawChart-7---option.timeline.data---");
+	console.log(option.timeline.data);
 	// 使用刚指定的配置项和数据显示图表。
 	myChart.setOption(option);
-	// console.log("开始drawChart-7---2---");
-	// console.log("开始drawChart-7---option---");
-	// console.log(option);
+
 
 	function getOption(result, k) {
-		console.log("开始drawChart-7---3---"+k);
 	    var clusterAssment = result.clusterAssment;
 	    var centroids = result.centroids;
 	    var ptsInCluster = result.pointsInCluster;
@@ -813,94 +771,6 @@ function drawChart7(){
 	        color: color
 	    };
 	}
+
 }
 
-function drawEChart(){
-	// 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('showAera'));
-	console.log(myChart);
-	// var myChart2 = echarts.init(document.getElementById('myCanvas'));
-	// console.log(myChart2);
-    // 指定图表的配置项和数据
-    var option = {
-	    title : {
-	        text: '待返修机型统计',
-	        x:'center',
-	       	textStyle:{
-	       		fontFamily: '宋体',
-			    fontSize: 18,
-			    fontWeight: 'bolder',
-			    color: '#000000'
-			} 
-	    },
-	    tooltip : {
-	        trigger: 'item',
-	        formatter: "{a} <br/>{b} : {c}({d}%)"
-	    },
-	    legend: {
-	        orient : 'vertical',
-	        x : 'left',
-	        data:[]
-	    },
-	    toolbox: {
-	        show : false,
-	        feature : {
-	            mark : {show: true},
-	            dataView : {show: true, readOnly: false},
-	            magicType : {
-	                show: true, 
-	                type: ['pie', 'funnel'],
-	                option: {
-	                    funnel: {
-	                        x: '25%',
-	                        width: '50%',
-	                        funnelAlign: 'left',
-	                        max: 1548
-	                    }
-	                }
-	            },
-	            restore : {show: true},
-	            saveAsImage : {show: true}
-	        }
-	    },
-	    calculable : true,
-	    // color: ["#0099CC", "green", "#99CC33", "#FFCC00", "#FFFF00", "#FF6666", "#CCCCFF", "#999933", "#009966"],
-	    series : [
-	        {
-	            name:'数量',
-	            type:'pie',
-	            radius : '60%',
-	            center: ['50%', '60%'],
-	            data:[
-					 {value:335, name:'准时'},
-	                {value:310, name:'迟到'},
-	                {value:234, name:'请假'},
-	                {value:135, name:'未到'}
-				],
-	            itemStyle: {
-		           normal:{
-			             label:{
-			             show:true,
-			             formatter: '{b} - {c} \n({d}%) '
-			             },
-			             labelLine:{
-			             show:true
-			             }
-		             },
-	               // emphasis: {
-	               //     shadowBlur: 10,
-	               //     shadowOffsetX: 0,
-	               //     shadowColor: 'rgba(0, 0, 0, 0.5)'
-	               // }
-		    	}
-	        }
-	    ]
-	};
-    //set searchedData into option
-    // console.log('pieChartData---'+pieChartData);
-    // option.series[0].data=pieChartData;
-    // option.legend.data=pieChartData;   
-
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
-}

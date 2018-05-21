@@ -1,12 +1,12 @@
 
 $(function(){ 
 	console.log("开始画图--");
-	drawChart();
-	drawChart2(); 
-	drawChart3();
-	drawChart4();
-	drawChart5();
-	drawChart6();
+	// drawChart();
+	// drawChart2(); 
+	// drawChart3();
+	// drawChart4();
+	// drawChart5();
+	// drawChart6();
 	drawChart7();
 });
 
@@ -643,8 +643,14 @@ function drawChart7(){
 
 	}
 
+	console.log("开始drawChart-7---option.timeline.data---");
+	console.log(option.timeline.data);
+
 	// 使用刚指定的配置项和数据显示图表。
 	myChart.setOption(option);
+
+	console.log("开始drawChart-7---option---");
+	console.log(option);
 
 
 	function getOption(result, k) {
