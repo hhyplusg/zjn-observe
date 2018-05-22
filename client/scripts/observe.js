@@ -79,14 +79,14 @@ function drawChart(){
 		    legend: {
 		        enabled: true,
 		        align: 'right',
-		        backgroundColor: '#FCFFC5',
-		        borderColor: 'black',
-		        borderWidth: 2,
+		        // backgroundColor: '#FCFFC5',
+		        // borderColor: 'black',
+		        // borderWidth: 2,
 		        layout: 'vertical',
 		        verticalAlign: 'top',
 		        y: 95,
 				x:-600,
-		        shadow: true,
+		        // shadow: true,
 				floating: true,
 		        // itemWidth: 140,
 		        // maxHeight:10
@@ -99,7 +99,7 @@ function drawChart(){
 				
 		    },
 			rangeSelector: {
-				selected: 1
+				selected: 5
 			},
 			title: {
 				text: '博弈/存量指标',
@@ -136,7 +136,7 @@ function drawChart(){
 						dashStyle: 'shortdash',
 						width: 2,
 						label: {
-								text: '0.25',
+								// text: '0.25',
 								align: 'right',
 								x:-5,
 								y:-10
@@ -147,12 +147,12 @@ function drawChart(){
 						dashStyle: 'shortdash',
 						width: 2,
 						label: {
-								text: '0.4'
+								// text: '0.4'
 						}
 				}]
 			},
 			series: [{
-				name: '博弈/存量指标ghghghghghghghgh',
+				name: '博弈/存量指标',
 				data: data,
 				tooltip: {
 						valueDecimals: 4
@@ -194,8 +194,25 @@ function drawChart2(){
 						},
 					margin: 30
 				},
+				xAxis:{
+					lineColor: '#000',
+					lineWidth: 1,
+					tickLength: 5,
+					tickWidth: 1,
+					tickColor: '#000',
+					// linkedTo: 0
+					// offset:-100
+				},
 				yAxis: [
 				{
+					visible: true,
+					opposite: false,
+					lineColor: '#000',
+					lineWidth: 1,
+					tickLength: 5,
+					tickWidth: 1,
+					tickColor: '#000',
+					
 						title: {
 							text: '融资买入/可用担保价值',
 						},

@@ -1,18 +1,25 @@
 @import "./layout/base.scss";
-$title-background:#a26565;
-$left-background:#5b5b69;
+$title-background:#0e4ca7;
+// #a26565   5b5b69
+$left-background:#FFFFFF;
+// #5b5b69  #16666f
 $right-background:#FFFFFF;
 $font-color:#FFFFFF;
-div{
-    color: $font-color;
-}
+// 800080
+// div{
+//     color: $font-color;
+// }
 .title-container{
     height: 80px;
     margin: 0 auto;
     text-align: center;
     line-height: 80px;
     background: $title-background;
-    font-size: 30px;
+    font-size: 32px;
+    font-family: "Tahoma"; 
+    // style="background:url('./Lib/green.png')"
+    color: $font-color;
+    
 }
 .float{
     float: left;
@@ -20,21 +27,24 @@ div{
 .left-container{
     border: 1px solid #CCCCCC;
     box-sizing:border-box; 
+    color: black;
 
     background: $left-background;
-    width:26%;
+    width:25%;
     height: 500px;
     overflow-y: scroll;
     .category{
-        margin: 10px 10px;
+        padding: 10px 10px;
+        
          h3{
-            margin: 15px 0px;
+            padding: 15px 0px;
          }
          h4{
-             margin: 0px 20px;
+             padding: 0px 20px;
+            //  background-color: green;
          }
          ul{
-             margin: 5px 40px;
+             padding: 5px 10px 5px 40px;
              li{
                 padding: 5px 0px;
                 //  list-style-type:square;
@@ -43,7 +53,7 @@ div{
     }
 }
 .right-container{
-    width:74%;
+    width:75%;
     height: 500px;
     // background: $right-background;
     border-top: 1px solid #CCCCCC;
